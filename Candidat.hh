@@ -35,3 +35,5 @@ public:
 	bool operator()(const Candidat& a, const Candidat& b) const
 	{return a.get_num()<b.get_num();}
 };*/
+
+

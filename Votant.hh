@@ -28,3 +28,4 @@ public:
 void ordre_aleatoire(int tab[], int n);
 
 /*int bernoulli(float prob);*/
+

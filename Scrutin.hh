@@ -61,3 +61,4 @@ public:
 int higher_rank(std::vector<int> tab);
 
 int lower_rank(std::vector<int> tab);
+

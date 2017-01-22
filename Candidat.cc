@@ -70,3 +70,4 @@ ostream& operator<<(ostream& os, const Candidat& c)
 	os << "Candidat " << c.numero_ +1;
 	return os;
 }
+

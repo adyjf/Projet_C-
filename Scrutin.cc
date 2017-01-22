@@ -103,3 +103,4 @@ int lower_rank(vector<int> tab)
 	}
 	return rank;
 }
+

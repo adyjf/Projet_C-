@@ -88,3 +88,4 @@ void Simulateur::run_2()
 	}*/
 	scrutin_2.print_results();
 }
+

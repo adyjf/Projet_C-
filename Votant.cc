@@ -86,3 +86,5 @@ void ordre_aleatoire(int tab[], int n)
 
 	return d(gen);
 }*/
+
+	
