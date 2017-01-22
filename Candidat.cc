@@ -16,6 +16,8 @@ Candidat::Candidat(Simulateur *sim):simulateur_(sim),numero_(nb_)
 Candidat::~Candidat()
 {}
 
+/*--------------------------------------------------*/
+
 /*affiche candidat*/
 void Candidat::print_candidat()
 {
@@ -26,14 +28,6 @@ void Candidat::print_candidat()
 		cout << it->second << "\t";
 	}
 	cout << endl;
-}
-
-/*nécessaire pour map<Candidat, int> : comparateur numéro*/
-bool Candidat::operator<(const Candidat& autre) const
-{
-	if((*this).get_num_()<autre.get_num_())
-		return true;
-	else return false;
 }
 
 /*compte les bulletins_ au début de la simulation*/
@@ -51,6 +45,16 @@ void Candidat::compte_voix_init()
 				++nombre_voix_[(*it_bulletin).second];
 		}
 	}
+}
+
+/*--------------------------------------------------*/
+
+/*nécessaire pour map<Candidat, int> : comparateur numéro*/
+bool Candidat::operator<(const Candidat& autre) const
+{
+	if((*this).get_num_()<autre.get_num_())
+		return true;
+	else return false;
 }
 
 Candidat& Candidat::operator=(const Candidat& c)

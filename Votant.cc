@@ -10,6 +10,8 @@ Votant::Votant(Simulateur *sim):simulateur_(sim)
 Votant::~Votant()
 {}
 
+/*--------------------------------------------------*/
+
 /*initialise aléatoirement un bulletin_ pour votant*/
 void Votant::init()
 {
@@ -49,6 +51,8 @@ void Votant::voter()
 		i++;
 	}
 }
+
+/*--------------------------------------------------*/
 
 /*génère ordre aléatoire pour le bulletin_*/
 void ordre_aleatoire(int tab[], int n)

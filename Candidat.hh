@@ -23,8 +23,8 @@ public:
 	int get_nombre_voix_(int rank) {return nombre_voix_[rank];}
 
 	void print_candidat();
-	bool operator<(const Candidat& autre) const;
 	void compte_voix_init();
+	bool operator<(const Candidat& autre) const;
 	Candidat& operator=(const Candidat& c);
 	friend std::ostream& operator<<(std::ostream& os, const Candidat& c);
 };
