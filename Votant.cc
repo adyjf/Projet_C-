@@ -1,9 +1,21 @@
+/*
+Fichier : Votant.cc
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+contient les méthodes de la classe Votant
+*/
+
 #include "Votant.hh"
 #include "Simulateur.hh"
 #include "Candidat.hh"
 
 using namespace std;
 
+/*--------------------------------------------------*/
 Votant::Votant(Simulateur *sim):simulateur_(sim)
 {}
 
@@ -12,7 +24,11 @@ Votant::~Votant()
 
 /*--------------------------------------------------*/
 
-/*initialise aléatoirement un bulletin_ pour votant*/
+/*
+Fonction : initialise alétoirement un bulletin_ pour Votant au début du programme
+Paramètres :
+Return :
+*/
 void Votant::init()
 {
 	int tab[NB_CANDIDATS];
@@ -27,7 +43,11 @@ void Votant::init()
 	}
 }
 
-/*affiche bulletin de votant*/
+/*
+Fonction : affiche bulletin_
+Paramètres :
+Return :
+*/
 void Votant::print_votant()
 {
 	map<Candidat, int>::iterator it;
@@ -38,6 +58,11 @@ void Votant::print_votant()
 	cout << endl;
 }
 
+/*
+Fonction : incomplète
+Paramètres :
+Return :
+*/
 void Votant::voter(int n, vector<Candidat> liste)
 {
 	int tab[n];
@@ -54,7 +79,11 @@ void Votant::voter(int n, vector<Candidat> liste)
 
 /*--------------------------------------------------*/
 
-/*génère ordre aléatoire pour le bulletin_*/
+/*
+Fonction : génère un ordre alétoire
+Paramètres :
+Return :
+*/
 void ordre_aleatoire(int tab[], int n)
 {
 	for(int i=0; i<n; i++)
@@ -86,5 +115,3 @@ void ordre_aleatoire(int tab[], int n)
 
 	return d(gen);
 }*/
-
-	

@@ -1,8 +1,20 @@
+/*
+Fichier : Candidat.cc
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+contient les méthodes de la classe Candidat
+*/
+
 #include "Candidat.hh"
 #include "Simulateur.hh"
 
 using namespace std;
 
+/*--------------------------------------------------*/
 int Candidat::nb_=0;
 
 Candidat::Candidat()
@@ -18,7 +30,11 @@ Candidat::~Candidat()
 
 /*--------------------------------------------------*/
 
-/*affiche candidat*/
+/*
+Fonction : affiche le nombre de voix recueilli par le candidat
+Paramètres :
+Return :
+*/
 void Candidat::print_candidat()
 {
 	map<int, int>::iterator it;
@@ -30,7 +46,11 @@ void Candidat::print_candidat()
 	cout << endl;
 }
 
-/*compte les bulletins_ au début de la simulation*/
+/*
+Fonction : compte les bulletins_ des Votants à l'initialisation
+Paramètres :
+Return :
+*/
 void Candidat::compte_voix_init()
 {
 	vector<Votant>* liste_p = (*simulateur_).get_liste_votants_();
@@ -49,7 +69,12 @@ void Candidat::compte_voix_init()
 
 /*--------------------------------------------------*/
 
-/*nécessaire pour map<Candidat, int> : comparateur numéro*/
+/*
+Fonction : comparateur Candidat selon numero_. Opérateur nécessaire pour l'utilisation de map<Candidat, int> dans la classe Votant
+Paramètres : Candidat& autre
+Return : true si numero_<autre.numero_
+	false sinon
+*/
 bool Candidat::operator<(const Candidat& autre) const
 {
 	if((*this).get_num_()<autre.get_num_())
@@ -57,6 +82,11 @@ bool Candidat::operator<(const Candidat& autre) const
 	else return false;
 }
 
+/*
+Fonction : opérateur= pour initiliser un Candidat à partir d'un autre
+Paramètres :
+Return :
+*/
 Candidat& Candidat::operator=(const Candidat& c)
 {	
 	simulateur_ = c.simulateur_;
@@ -65,9 +95,13 @@ Candidat& Candidat::operator=(const Candidat& c)
 	return (*this);
 }
 
+/*
+Fonction : opérateur<< flux de sortie pour l'affichage de Candidat
+Paramètres :
+Return :
+*/
 ostream& operator<<(ostream& os, const Candidat& c)
 {
 	os << "Candidat " << c.numero_ +1;
 	return os;
 }
-

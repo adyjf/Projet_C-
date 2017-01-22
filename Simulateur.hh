@@ -1,3 +1,14 @@
+/*
+Fichier : Simulateur.hh
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+classe Simulateur
+*/
+
 #pragma once
 #include <iostream>
 #include <cstdlib>
@@ -7,8 +18,8 @@
 #include "Votant.hh"
 #include "Scrutin.hh"
 
-#define NB_CANDIDATS 4
-#define NB_VOTANTS 1000
+#define NB_CANDIDATS 5
+#define NB_VOTANTS 5000
 
 class Candidat;
 class Votant;
@@ -33,11 +44,10 @@ public:
 	void init_simulation();
 	void init_votants();
 	void init_candidats();
+
 	void print_liste_votants();
 	void print_liste_candidats();
 
 	void run_1();
 	void run_2();
 };
-
-

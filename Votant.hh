@@ -1,3 +1,14 @@
+/*
+Fichier : Votant.hh
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+classe Votant
+*/
+
 #pragma once
 #include <iostream>
 #include <cstdlib>
@@ -12,7 +23,7 @@ class Votant
 {
 private:
 	Simulateur *simulateur_;
-	std::map<Candidat, int> bulletin_;
+	std::map<Candidat, int> bulletin_; //Candidat - rang
 
 public:
 	Votant(Simulateur *sim);
@@ -28,4 +39,3 @@ public:
 void ordre_aleatoire(int tab[], int n);
 
 /*int bernoulli(float prob);*/
-

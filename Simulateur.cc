@@ -1,3 +1,14 @@
+/*
+Fichier : Simulateur.cc
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+contient les méthodes de la classe Simulateur
+*/
+
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -8,6 +19,7 @@
 
 using namespace std;
 
+/*--------------------------------------------------*/
 Simulateur::Simulateur(int n):nb_votants_(n), scrutin_1(this), scrutin_2(this)
 {}
 
@@ -16,13 +28,22 @@ Simulateur::~Simulateur()
 
 /*--------------------------------------------------*/
 
-/*genère NB_VOTANTS votants aléatoirement + liste des partis*/
+/*
+Fonction : initialise la liste des candidats et la liste des votants aléatoirement
+Paramètres :
+Return :
+*/
 void Simulateur::init_simulation()
 {
 	(*this).init_candidats();
 	(*this).init_votants();
 }
 
+/*
+Fonction : initialise la liste des votants aléatoirement
+Paramètres :
+Return :
+*/
 void Simulateur::init_votants()
 {
 	for(int i=0; i<NB_VOTANTS; i++)
@@ -33,6 +54,11 @@ void Simulateur::init_votants()
 	}
 }
 
+/*
+Fonction : initialise la liste des candidats aléatoirement
+Paramètres :
+Return :
+*/
 void Simulateur::init_candidats()
 {
 	for(int i=0; i<NB_CANDIDATS; i++)
@@ -41,9 +67,14 @@ void Simulateur::init_candidats()
 		liste_candidats_.push_back(candidat);
 	}
 }
+
 /*--------------------------------------------------*/
 
-/*affiche la liste des votants*/
+/*
+Fonction : affiche les liste des votants
+Paramètres :
+Return :
+*/
 void Simulateur::print_liste_votants()
 {
 	vector<Votant>::iterator it;
@@ -54,6 +85,11 @@ void Simulateur::print_liste_votants()
 	}
 }
 
+/*
+Fonction : affiche les liste des candidats
+Paramètres :
+Return :
+*/
 void Simulateur::print_liste_candidats()
 {
 	vector<Candidat>::iterator it;
@@ -63,7 +99,6 @@ void Simulateur::print_liste_candidats()
 	cout << endl;
 	for(it=liste_candidats_.begin(); it!=liste_candidats_.end(); it++)
 	{
-		//(*it).voter();
 		(*it).compte_voix_init();
 		(*it).print_candidat();
 	}
@@ -71,12 +106,22 @@ void Simulateur::print_liste_candidats()
 
 /*--------------------------------------------------*/
 
+/*
+Fonction : lance le décompte des voix pour le scrutin majoritaire à un tour
+Paramètres :
+Return :
+*/
 void Simulateur::run_1()
 {
 	scrutin_1.decompte_voix();
 	scrutin_1.print_results();
 }
 
+/*
+Fonction : lance le décompte des voix pour le scrutin majoritaire à deux tours (incomplète)
+Paramètres :
+Return :
+*/
 void Simulateur::run_2()
 {
 	scrutin_2.decompte_voix();
@@ -88,4 +133,3 @@ void Simulateur::run_2()
 	}*/
 	scrutin_2.print_results();
 }
-

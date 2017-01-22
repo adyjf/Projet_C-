@@ -1,9 +1,21 @@
+/*
+Fichier : Scrutin.cc
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+contient les méthodes de la classe Scrutin et des classes héritées
+*/
+
 #include "Scrutin.hh"
 #include "Simulateur.hh"
 #include "Candidat.hh"
 
 using namespace std;
 
+/*--------------------------------------------------*/
 Scrutin::Scrutin()
 {}
 
@@ -35,6 +47,12 @@ Majorite_deux_tour::~Majorite_deux_tour()
 {}
 
 /*--------------------------------------------------*/
+
+/*
+Fonction : majorité à un tour => le vainqueur_ est le Candidat ayant receuilli le plus de vote de rang 1
+Paramètres :
+Return :
+*/
 void Majorite_un_tour::decompte_voix()
 {
 	vector<Candidat> liste = (*simulateur_).get_liste_candidats_();
@@ -47,12 +65,25 @@ void Majorite_un_tour::decompte_voix()
 	}
 }
 
+
+/*
+Fonction : affichage
+Paramètres :
+Return :
+*/
 void Majorite_un_tour::print_results()
 {
 	cout << "\t-----SCRUTIN MAJORITAIRE A UN TOUR-----"<< endl;
 	cout << vainqueur_ << "\t" << (float)(vainqueur_.get_nombre_voix_(1))/NB_VOTANTS << "%" << endl;
 }
+
 /*--------------------------------------------------*/
+
+/*
+Fonction : donne les résultats du premier tour => les 2 Candidats ayant receuilli le plus vote accèdent au second tour
+Paramètres :
+Return :
+*/
 void Majorite_deux_tour::decompte_voix()
 {
 	vector<Candidat> liste = (*simulateur_).get_liste_candidats_();
@@ -68,6 +99,11 @@ void Majorite_deux_tour::decompte_voix()
 	resultat_premier_tour_.push_back(liste[higher_rank(result_1)]);
 }
 
+/*
+Fonction : affichage
+Paramètres :
+Return :
+*/
 void Majorite_deux_tour::print_results()
 {
 	cout << "\t-----SCRUTIN MAJORITAIRE A DEUX TOUR-----"<< endl;
@@ -82,6 +118,7 @@ void Majorite_deux_tour::print_results()
 }
 
 /*--------------------------------------------------*/
+
 int higher_rank(vector<int> tab)
 {
 	int rank=0;
@@ -104,3 +141,46 @@ int lower_rank(vector<int> tab)
 	return rank;
 }
 
+/*--------------------------------------------------*/
+/*
+Algorithme de triFusion fonctionnel 
+nous voulions l'utiliser pour ordonner les candidats en fonction du nombre de voix obtenu.
+*/
+vector<int> triFusion(vector<int> tab)
+{
+	if(tab.size()<=1)
+		return tab;
+	else
+	{	
+		size_t const half = tab.size()/2;
+		vector<int> split_hi(std::make_move_iterator(tab.begin()+half), std::make_move_iterator(tab.end()));
+		tab.erase(tab.begin()+half, tab.end());
+		return fusion(triFusion(tab), triFusion(split_hi));
+	}
+}
+
+vector<int> fusion(vector<int> a, vector<int> b)
+{
+	if(a.empty())
+		return b;
+	if(b.empty())
+		return a;
+	if(a[0] <= b[0])
+	{
+		vector<int> split_hi(std::make_move_iterator(a.begin()+1),
+	std::make_move_iterator(a.end()));
+		a.erase(a.begin()+1, a.end());
+		vector<int> fuse = fusion(split_hi, b);
+		a.insert(a.end(), fuse.begin(), fuse.end());
+		return a;
+	}
+	else
+	{
+		vector<int> split_hi(std::make_move_iterator(b.begin()+1),
+	std::make_move_iterator(b.end()));
+		b.erase(b.begin()+1, b.end());
+		vector<int> fuse = fusion(a, split_hi);
+		b.insert(b.end(), fuse.begin(), fuse.end());
+		return b;
+	}
+}

@@ -1,3 +1,14 @@
+/*
+Fichier : main.cc
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+progrmme test
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -29,4 +40,3 @@ int main()
 	cout << "Temps d'éxécution : " << temps << " sec" << endl;
 	return 0;
 }
-

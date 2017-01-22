@@ -1,3 +1,14 @@
+/*
+Fichier : Scrutin.hh
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+classe Scrutin et classe héritées
+*/
+
 #pragma once
 #include <iostream>
 #include <cstdlib>
@@ -7,6 +18,8 @@
 
 class Simulateur;
 class Candidat;
+
+/*--------------------------------------------------*/
 
 class Scrutin
 {
@@ -23,6 +36,8 @@ public:
 	virtual void print_results()=0;
 };
 
+/*--------------------------------------------------*/
+
 class Scrutin_majoritaire : public Scrutin
 {
 protected:
@@ -32,6 +47,8 @@ public:
 	virtual void decompte_voix()=0;
 	virtual void print_results()=0;
 };
+
+/*--------------------------------------------------*/
 
 class Majorite_un_tour : public Scrutin_majoritaire
 {
@@ -43,6 +60,8 @@ public:
 	void decompte_voix();
 	void print_results();
 };
+
+/*--------------------------------------------------*/
 
 class Majorite_deux_tour : public Scrutin_majoritaire
 {
@@ -58,7 +77,11 @@ public:
 	void print_results();
 };
 
+/*--------------------------------------------------*/
 int higher_rank(std::vector<int> tab);
 
 int lower_rank(std::vector<int> tab);
 
+std::vector<int> triFusion(std::vector<int> tab);
+
+std::vector<int> fusion(std::vector<int> a, std::vector<int> b);

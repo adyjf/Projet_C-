@@ -1,3 +1,14 @@
+/*
+Fichier : Candidat.hh
+Auteur : 
+	ABBAR Yassine
+	DRAY Paul-Alexis
+	THAI Jean-François
+Date : 22/01/17
+
+classe Candidat
+*/
+
 #pragma once
 #include <iostream>
 #include <cstdlib>
@@ -11,7 +22,7 @@ private:
 	static int nb_;
 	Simulateur *simulateur_;
 	int numero_;
-	std::map<int, int> nombre_voix_;
+	std::map<int, int> nombre_voix_; //rang - nombre de voix
 
 public:
 	Candidat();
@@ -24,16 +35,8 @@ public:
 
 	void print_candidat();
 	void compte_voix_init();
+
 	bool operator<(const Candidat& autre) const;
 	Candidat& operator=(const Candidat& c);
 	friend std::ostream& operator<<(std::ostream& os, const Candidat& c);
 };
-
-/*class cmp_Candidat
-{
-public:
-	bool operator()(const Candidat& a, const Candidat& b) const
-	{return a.get_num()<b.get_num();}
-};*/
-
-
