@@ -20,7 +20,8 @@ private:
 	int nb_votants_;
 	std::vector<Candidat> liste_candidats_;
 	std::vector<Votant> liste_votants_;
-	Scrutin scrutin_;
+	Majorite_un_tour scrutin_1;
+	Majorite_deux_tour scrutin_2;
 
 public:
 	Simulateur(int n);
@@ -35,5 +36,6 @@ public:
 	void print_liste_votants();
 	void print_liste_candidats();
 
-	void run();
+	void run_1();
+	void run_2();
 };

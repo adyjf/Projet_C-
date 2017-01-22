@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <map>
+#include <vector>
 
 
 class Candidat;
@@ -21,7 +22,7 @@ public:
 
 	void init();
 	void print_votant();
-	void voter();
+	void voter(int n, std::vector<Candidat> liste);
 };
 
 void ordre_aleatoire(int tab[], int n);

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Simulateur::Simulateur(int n):nb_votants_(n), scrutin_(this)
+Simulateur::Simulateur(int n):nb_votants_(n), scrutin_1(this), scrutin_2(this)
 {}
 
 Simulateur::~Simulateur()
@@ -71,8 +71,20 @@ void Simulateur::print_liste_candidats()
 
 /*--------------------------------------------------*/
 
-void Simulateur::run()
+void Simulateur::run_1()
 {
-	scrutin_.decompte_voix();
-	scrutin_.print_results();
+	scrutin_1.decompte_voix();
+	scrutin_1.print_results();
+}
+
+void Simulateur::run_2()
+{
+	scrutin_2.decompte_voix();
+	/*vector<Candidat> second_liste = scrutin_2.get_premier_tour_();
+	vector<Votant>::iterator it;
+	for(it=liste_votants_.begin(); it!=liste_votants_.end(); ++it)
+	{
+
+	}*/
+	scrutin_2.print_results();
 }

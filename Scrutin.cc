@@ -49,21 +49,43 @@ void Majorite_un_tour::decompte_voix()
 
 void Majorite_un_tour::print_results()
 {
-	cout << vainqueur_ << endl;
+	cout << "\t-----SCRUTIN MAJORITAIRE A UN TOUR-----"<< endl;
+	cout << vainqueur_ << "\t" << (float)(vainqueur_.get_nombre_voix_(1))/NB_VOTANTS << "%" << endl;
 }
 /*--------------------------------------------------*/
 void Majorite_deux_tour::decompte_voix()
 {
-	vector<Candidat> liste = (*simulateur).get_liste_candidats_();
-	
+	vector<Candidat> liste = (*simulateur_).get_liste_candidats_();
+	vector<int> result_1;
+	vector<Candidat>::iterator it;
+	for(it=liste.begin(); it!=liste.end(); ++it)
+	{
+		result_1.push_back((*it).get_nombre_voix_(1));
+	}
+
+	resultat_premier_tour_.push_back(liste[higher_rank(result_1)]);
+	result_1.erase(result_1.begin()+higher_rank(result_1));
+	resultat_premier_tour_.push_back(liste[higher_rank(result_1)]);
 }
 
+void Majorite_deux_tour::print_results()
+{
+	cout << "\t-----SCRUTIN MAJORITAIRE A DEUX TOUR-----"<< endl;
+	vector<Candidat>::iterator it;
+	cout << "RESULTAT PREMIER TOUR" << endl;
+	for(it=resultat_premier_tour_.begin(); it!=resultat_premier_tour_.end(); ++it)
+	{
+		cout << (*it) << " " << (float)(*it).get_nombre_voix_(1)/NB_VOTANTS << "%" << endl;
+	}
+	cout << "\nRESULTAT SECOND TOUR" << endl;
+	//cout << vainqueur_ << endl;
+}
 
 /*--------------------------------------------------*/
 int higher_rank(vector<int> tab)
 {
 	int rank=0;
-	for(int i=1; i<tab.size(); i++)
+	for(int i=1; i<(int)tab.size(); i++)
 	{
 		if(tab[rank]<tab[i])
 			rank = i;
@@ -74,7 +96,7 @@ int higher_rank(vector<int> tab)
 int lower_rank(vector<int> tab)
 {
 	int rank=0;
-	for(int i=1; i<tab.size(); i++)
+	for(int i=1; i<(int)tab.size(); i++)
 	{
 		if(tab[rank]>tab[i])
 			rank = i;

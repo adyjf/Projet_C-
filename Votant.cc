@@ -38,12 +38,12 @@ void Votant::print_votant()
 	cout << endl;
 }
 
-void Votant::voter()
+void Votant::voter(int n, vector<Candidat> liste)
 {
-	int tab[NB_CANDIDATS];
-	ordre_aleatoire(tab, NB_CANDIDATS);
+	int tab[n];
+	ordre_aleatoire(tab, n);
 	int i=0;
-	vector<Candidat> liste = (*simulateur_).get_liste_candidats_();
+	//vector<Candidat> liste = (*simulateur_).get_liste_candidats_();
 	vector<Candidat>::iterator it;
 	for(it=liste.begin(); it!=liste.end(); ++it)
 	{

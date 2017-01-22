@@ -67,6 +67,6 @@ Candidat& Candidat::operator=(const Candidat& c)
 
 ostream& operator<<(ostream& os, const Candidat& c)
 {
-	os << "Candidat " << c.numero_ +1<< endl;
+	os << "Candidat " << c.numero_ +1;
 	return os;
 }

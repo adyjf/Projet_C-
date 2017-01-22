@@ -21,7 +21,8 @@ int main()
 
 	cout << endl;
 
-	simulation.run();
+	simulation.run_1();
+	simulation.run_2();
 	
 	t2 = clock();
 	temps = (float)(t2-t1)/CLOCKS_PER_SEC;

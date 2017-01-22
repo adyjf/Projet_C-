@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cstdlib>
-#include <>
+#include <vector>
 
 #include "Candidat.hh"
 
@@ -52,10 +52,12 @@ public:
 	Majorite_deux_tour(Simulateur *sim);
 	~Majorite_deux_tour();
 
+	std::vector<Candidat> get_premier_tour_() const {return resultat_premier_tour_;}
+
 	void decompte_voix();
 	void print_results();
 };
 
-int higher_rank(vector<int> tab);
+int higher_rank(std::vector<int> tab);
 
-int lower_rank(vector<int> tab);
+int lower_rank(std::vector<int> tab);
